@@ -1,0 +1,166 @@
+*{
+    margin:0;
+    padding: 0;
+}
+
+body{
+    background-color:rgba(63, 82, 100, 0.72); 
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+}
+
+.pokazGroup{
+    position: relative; 
+    overflow: hidden;
+    height: 100vh;
+    background-color: #84939A;
+    display: flex;
+    align-items: center;
+
+    flex-direction:column;  /*kierunek głównej osi*/
+    flex-wrap:wrap;         /*wrap - będzie wielo- wierszowe lub kolumnowe*/
+    padding-bottom: 2em;
+    /* transition: 2.6s transform linear; */
+}
+
+.wykaz{
+    font-family:monospace;
+    font-weight: bold;
+    color:#bdcb13;
+    margin: 0.1em 0 2em 0; 
+    padding: .2em;
+    width: 100%;
+    display: flex;
+    flex-direction:row;  /*kierunek głównej osi*/
+    align-items: center;
+    justify-content:center;
+
+ }
+
+
+
+#obrotek{
+    box-shadow: .4em .4em 3em black;
+    border: .15em solid #097b80;
+    border-radius: .53em;
+    width: 18em;
+    height: auto;
+    overflow: hidden;
+}
+
+.nrId{
+    content: "x";
+    color:#F9B8B8;
+    box-shadow: .2em .2em .53em #1F5A69;
+    font-size: 1.2em;
+    padding: 0 .51em;
+
+}
+
+.nrId::after{
+    content: "";
+    color:red;
+    
+}
+
+.nrId1,.nrId2,.nrId3,.nrId4,.nrId5{
+    padding: 0 .51em;
+}
+
+#rodzic{
+    /* width: 100%; */
+}
+
+#rodzic > #obrotek {
+/* 
+      animation:przesuwany_tekst 5s cubic-bezier(0.6, 0.28, 0.74, 0.05) infinite;
+      animation:animowany_tekst 5s linear infinite;
+*/ 
+
+     animation:przesuwany_tekst 5s ease-out, animowany_tekst 4s 5s infinite ease-in-out; 
+      
+    /*    animation: pulsate 5s ease-out, shrink 5s 5s infinite ease-in-out;   */
+}
+
+#rodzic > #obrotek:nth-child(1) {
+        /* animation-delay:2500ms;  */
+      }
+
+
+#rodzic > #obrotek:hover {
+  animation-play-state:paused;
+}
+
+
+#element_z_tlem {
+        animation:ruch 300s linear infinite alternate;
+        background-image:url('../img/para1.png'),
+                         url('../img/para2.png'),
+                         url('../img/para3.png');
+      }
+
+
+/*------------------------ANIMACJA-RUCHOME-TŁO------------------------*/
+@keyframes ruch
+{
+    0% {background-position:0 0, 0 0, 0 0;}
+    100% {background-position:500em 0, 375em 0, 250em 0;}
+}
+
+/* dla Google Chrome, Safari, Opera 15+ */
+@-webkit-keyframes ruch
+{
+    0% {background-position:0 0, 0 0, 0 0;}
+    100% {background-position:500em 0, 375em 0, 250em 0;}
+}
+
+/*------------------------ANIMACJA------------------------*/
+@keyframes animowany_tekst
+{
+0% {transform:rotate(0);}
+10% {transform:rotateX(360deg);} */
+100% {transform:rotateX(360deg);}
+}
+
+
+@keyframes przesuwany_tekst
+{
+  0% { transform:translateX( 205%)}
+100% { transform:translateX(-225%)}
+}
+
+
+@keyframes shrink{
+    0%{
+        box-shadow: 0 0 2em 2em #C7FC08;
+        transform: scale(1);
+    }
+
+
+    50%{
+        box-shadow: 0 0 3em 3em #F6676C;
+        transform: scale(1.15);
+      }
+
+    100%{
+
+        box-shadow: 0 0 5em 5em #F90A1C;
+        transform: scale(1.25);
+      }
+
+}
+
+@keyframes pulsate{
+      0%{
+        transform: scale(1);
+      }
+
+      50%{
+        transform: scale(1.2);
+      }
+
+    100%{ 
+        transform: scale(1);
+      }
+  }
